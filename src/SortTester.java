@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests of Sorter objects.
  *
- * @author Your Name
+ * @author Gabriela Roznawska
  */
 public class SortTester {
 
@@ -40,9 +40,34 @@ public class SortTester {
   @Test
   public void reverseOrderedStringTest() {
     String[] original = { "foxtrot", "delta", "charlie", "bravo", "alpha" };
-    String[] expected = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
+    String[] expecting = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertArrayEquals(original, expected);
+    assertArrayEquals(original, expecting);
   } // orderedStringTest
 
+  @Test
+  public void theSameLetterTest(){
+    String[] original = { "aelta", "alavo", "arpha" };
+    String[] expected = original.clone();
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  }//theSameLengthTest
+
+  @Test
+  public void oneStringTest(){
+    String[] original = { "alpha" };
+    String[] expected = original.clone();
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  }//oneStringTest
+
+  @Test
+  public void mixedWordsTest(){
+    String[] original = { "alpha", "delta", "bravo", "hotel", "charlie", "kilo"};
+    String[] expected = { "alpha", "bravo", "charlie", "delta", "hotel", "kilo"};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(original, expected);
+  }//mixedWordsTest
+
+  
 } // class SortTester
