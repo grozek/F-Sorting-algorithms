@@ -43,20 +43,17 @@ public class InsertionSort implements Sorter {
 
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
-    int x;
+    int x = 0;
 
     for (int i=1; i < values.length; i++){
       if ((order.compare(values[i],values[i-1]) < 0)){
-        swap(values, i, i-1);
-        x = 1;
-        //if its out of bounds then stop
+        x = 0;
         while (order.compare(values[i-x],values[i-x-1]) < 0){
           swap(values, i-x, i-x-1);
-          x++;
-
-          if (i-x == 0){
+          if (i-x-1 == 0){
           break;
         }
+        x++;
         }
       }
 
