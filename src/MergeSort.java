@@ -1,5 +1,7 @@
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.Arrays;
+
 /**
  * Sort using merge sort.
  *
@@ -8,67 +10,80 @@ import java.util.Arrays;
 
 public class MergeSort implements Sorter {
 
-  // +--------+------------------------------------------------------
-  // | Fields |
-  // +--------+
+   // +--------+------------------------------------------------------
+   // | Fields |
+   // +--------+
 
-  
-  /**
-   * The one sorter you can access.
-   */
-  public static Sorter SORTER = new MergeSort();
+   /**
+    * The one sorter you can access.
+    */
+   public static Sorter SORTER = new MergeSort();
 
-  // +--------------+------------------------------------------------
-  // | Constructors |
-  // +--------------+
+   // +--------------+------------------------------------------------
+   // | Constructors |
+   // +--------------+
 
-  /**
-   * Create a sorter.
-   */
-  MergeSort() {
-  } // MergeSort()
+   /**
+    * Create a sorter.
+    */
+   MergeSort() {} // MergeSort()
 
-  // +---------+-----------------------------------------------------
-  // | Methods |
-  // +---------+
+   // +---------+-----------------------------------------------------
+   // | Methods |
+   // +---------+
 
-  @Override
-  public <T> void sort(T[] values, Comparator<? super T> order) {
-    int left = 0;
-    int right = values.length;
-    int mid = left+right/2;
-    int newI = 0;
+   public <T> void SortHelper(T[] values, Comparator<? super T> order, int left, int right) {
 
-    T[] rightArray = Arrays.copyOfRange(values, left, mid);
-    T[] leftArray = Arrays.copyOfRange(values, mid+1, right);
+      if (left < right) {
+         int mid = (left + right) / 2;
 
-    // for (int i=0; values[i]!= values[mid]; i++){
-    //   leftArray[i] = values[i];
-    // }
-    // for (int i=mid+1; values[i]!= values[right]; i++){
-    //   rightArray[newI] = values[i];
-    //   newI++;
-    // }
-    int rightIndex = 0;
-    int leftIndex = 0;
+         SortHelper(values, order, left, mid);
+         SortHelper(values, order, mid+1, right);
+        // ArrayList<T> newArray = new ArrayList<>();
+         T[] rightArray = Arrays.copyOfRange(values, left, mid+1);
+         T[] leftArray = Arrays.copyOfRange(values, mid + 1, right+1);
 
-    for (int i=0; (!((leftArray[leftIndex]==null) || (rightArray[rightIndex] == null))); i++){
-      if ((order.compare(leftArray[leftIndex], rightArray[rightIndex])) < 0){
-         values[i] = leftArray[leftIndex];
-         leftArray[leftIndex] = null;
-         leftIndex = leftIndex + 1;
+         int rightIndex = 0;
+         int leftIndex = 0;
+         int i = left;
+         while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+            if ((order.compare(leftArray[leftIndex], rightArray[rightIndex])) <= 0) {
+               values[i] = leftArray[leftIndex];
+               leftIndex++;
+            } 
+             else{
+               values[i] = rightArray[rightIndex];
+               rightIndex++;
+            }
+            i++;
+         }
+         while (leftIndex < leftArray.length) {
+            values[i] = leftArray[leftIndex];
+            i++;
+            leftIndex++;
+         }
+         while (rightIndex < rightArray.length) {
+            values[i] = rightArray[rightIndex];
+            i++;
+            rightIndex++;
+         }
       }
-      if ((order.compare(leftArray[leftIndex], rightArray[rightIndex])) == 0){
-         values[i] = leftArray[leftIndex];
-         leftArray[leftIndex] = null;
-         leftIndex = leftIndex + 1;
+   }
+
+   @Override
+   public <T> void sort(T[] values, Comparator<? super T> order) {
+
+      if (values.length <= 1) {
+         return;
       }
-      if ((order.compare(leftArray[leftIndex], rightArray[rightIndex])) > 0){
-         values[i] = rightArray[rightIndex];
-         rightArray[rightIndex] = null;
-         rightIndex = rightIndex + 1;
-      }
-    }
-    }
-  } // sort(T[], Comparator<? super T>
- // class MergeSort
+      SortHelper(values, order, 0, values.length-1);
+
+   }
+
+}
+// sort(T[], Comparator<? super T>
+// class MergeSort
+
+
+
+
