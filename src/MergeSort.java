@@ -4,8 +4,11 @@ import java.util.Arrays;
 
 /**
  * Sort using merge sort.
- *
- * @author Your Name Here
+ * 
+ * @author Gabriela Roznawska 
+ * November 3rd 2023 
+ * CSC-207 MP6 
+ * Acknowledgements: Prof Rebelsky, Mentor Pom and my individual tutor
  */
 
 public class MergeSort implements Sorter {
@@ -38,10 +41,10 @@ public class MergeSort implements Sorter {
          int mid = (left + right) / 2;
 
          SortHelper(values, order, left, mid);
-         SortHelper(values, order, mid+1, right);
-        // ArrayList<T> newArray = new ArrayList<>();
-         T[] rightArray = Arrays.copyOfRange(values, left, mid+1);
-         T[] leftArray = Arrays.copyOfRange(values, mid + 1, right+1);
+         SortHelper(values, order, mid + 1, right);
+         // ArrayList<T> newArray = new ArrayList<>();
+         T[] rightArray = Arrays.copyOfRange(values, left, mid + 1);
+         T[] leftArray = Arrays.copyOfRange(values, mid + 1, right + 1);
 
          int rightIndex = 0;
          int leftIndex = 0;
@@ -50,8 +53,7 @@ public class MergeSort implements Sorter {
             if ((order.compare(leftArray[leftIndex], rightArray[rightIndex])) <= 0) {
                values[i] = leftArray[leftIndex];
                leftIndex++;
-            } 
-             else{
+            } else {
                values[i] = rightArray[rightIndex];
                rightIndex++;
             }
@@ -76,14 +78,12 @@ public class MergeSort implements Sorter {
       if (values.length <= 1) {
          return;
       }
-      SortHelper(values, order, 0, values.length-1);
+      SortHelper(values, order, 0, values.length - 1);
 
    }
 
 }
 // sort(T[], Comparator<? super T>
 // class MergeSort
-
-
 
 
