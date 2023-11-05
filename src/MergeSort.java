@@ -1,14 +1,11 @@
 import java.util.Comparator;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
  * Sort using merge sort.
  * 
- * @author Gabriela Roznawska 
- * November 3rd 2023 
- * CSC-207 MP6 
- * Acknowledgements: Prof Rebelsky, Mentor Pom and my individual tutor
+ * @author Gabriela Roznawska November 3rd 2023 
+ * Acknowledgements: Prof Rebelsky, Mentor Pom Dao and an individual tutor Destany Best
  */
 
 public class MergeSort implements Sorter {
@@ -35,17 +32,30 @@ public class MergeSort implements Sorter {
    // | Methods |
    // +---------+
 
-   public <T> void SortHelper(T[] values, Comparator<? super T> order, int left, int right) {
+   /*
+    * Unless the input consists of one or less input items, then perform the MergeSort algorithm
+    */
+   @Override
+   public <T> void sort(T[] values, Comparator<? super T> order) {
 
+      if (values.length <= 1) {
+         return;
+      }
+      SortHelper(values, order, 0, values.length - 1);
+
+   }// sort(T[], Comparator<? super T>
+
+   /*
+    * If the left is lower than right, then compute the middle and recursively split the input into singular
+    * numbers and then merge them into one array, where the numbers are put in raising order.
+    * If one array "runs out" of numbers then just simply add the end of the remaining array to the back of new array
+    */
+   public <T> void SortHelper(T[] values, Comparator<? super T> order, int left, int right) {
       if (left < right) {
          int mid = (left + right) / 2;
-
          SortHelper(values, order, left, mid);
-         SortHelper(values, order, mid + 1, right);
-         // ArrayList<T> newArray = new ArrayList<>();
          T[] rightArray = Arrays.copyOfRange(values, left, mid + 1);
          T[] leftArray = Arrays.copyOfRange(values, mid + 1, right + 1);
-
          int rightIndex = 0;
          int leftIndex = 0;
          int i = left;
@@ -70,20 +80,9 @@ public class MergeSort implements Sorter {
             rightIndex++;
          }
       }
-   }
+   }//sorterHelper(T[], Comparator<? super T, int, int>
 
-   @Override
-   public <T> void sort(T[] values, Comparator<? super T> order) {
+}// class MergeSort
 
-      if (values.length <= 1) {
-         return;
-      }
-      SortHelper(values, order, 0, values.length - 1);
-
-   }
-
-}
-// sort(T[], Comparator<? super T>
-// class MergeSort
 
 

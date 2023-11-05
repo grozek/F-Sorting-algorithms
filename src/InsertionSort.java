@@ -4,9 +4,7 @@ import java.util.Comparator;
  * Sort using insertion sort.
 
  * @author Gabriela Roznawska
- *  November 3rd 2023 
- * CSC-207 MP6 
- * Acknowledgements: Prof Rebelsky, Mentor Pom and my individual tutor
+ * Acknowledgements: Prof Rebelsky
  */
  
 
@@ -15,8 +13,6 @@ public class InsertionSort implements Sorter {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
-  Character[] array;
-  int max;
 
   /**
    * The one sorter you can access.
@@ -30,10 +26,8 @@ public class InsertionSort implements Sorter {
   /**
    * Create a sorter.
    */
-  InsertionSort() {
-    max = 30;
-    array = new Character[max];
-  } // InsertionSort()
+    InsertionSort(){}
+   // InsertionSort()
 
   // +---------+-----------------------------------------------------
   // | Methods |
@@ -46,10 +40,13 @@ public class InsertionSort implements Sorter {
     T temp = values[a];
     values[a] = values[b];
     values[b] = temp;
-  }// swap
+  }// swap(T[], int, int)
 
   /*
-   * Provided unsorted array of items, performs insertion sort and sorts out the array.
+   * Provided unsorted array of items, while the end of the array is not reached,
+   * if the item is lower than the previous item in an array, it swaps their indexes and continues 
+   * doing so until the item is higher than the previous one. Stops the swap if the front end of the array
+   * is encountered
    */
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {

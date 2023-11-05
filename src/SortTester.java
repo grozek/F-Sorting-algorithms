@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Gabriela Roznawska 
  * The fakeTest(), orderedStringTest() and reverseOrdereeedStringTest() as well as the Sorter class were 
- * provided by the prof. Samuel Rebelsky
+ * provided by the prof. Samuel Rebelsky. The remainder of the tests is my own edition.
  */
 public class SortTester {
 
