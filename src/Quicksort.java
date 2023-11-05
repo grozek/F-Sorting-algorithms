@@ -3,6 +3,7 @@ import java.util.Comparator;
 
 /**
  * Sort using Quicksort.
+
  * @author Gabriela Roznawska
  *  November 3rd 2023 
  * CSC-207 MP6 
@@ -43,40 +44,44 @@ public class Quicksort implements Sorter {
   // sorts out the array initially
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
-    int len = values.length;
-    sortHelper(values, order, 0, len);
+    sortHelper(values, order, 0, values.length-1);
 
   }
 
   public <T> void sortHelper(T[] values, Comparator<? super T> order, int lb, int ub) {
-    // int len = values.length;
-    // T[] rightArray = Arrays.copyOfRange(values, 0, len / 2);
-    // T[] leftArray = Arrays.copyOfRange(values, len / 2, len - 1);
-    if (lb != ub) {
+    if (lb < ub) {
       int part = partition(values, order, lb, ub);
-      sortHelper(values, order, lb, part);
+      sortHelper(values, order, lb, part - 1);
       sortHelper(values, order, part + 1, ub);
     }
   } // sort(T[], Comparator<? super T>
 
 
   public <T> int partition(T[] values, Comparator<? super T> order, int lb, int ub) {
-    int sm = 1;
+
+    int sm = lb + 1;
     int lg = ub;
-    // if ( != lg) {
-    // partition (values, order, lb, ub);
     T pivot = values[lb];
-    // should i put pivot to the ub/2 and then shift all ub/2+1 until len back ??????
-    while (sm < lg) {
-      if ((order.compare(values[sm], pivot)) <= 0) {
+
+   while (sm <= lg) {
+      while (sm <= lg && order.compare(values[sm], pivot) <= 0) {
         sm++;
-      } else {
-        swap(values, sm, lg);
+      } 
+      while (sm <= lg && order.compare(values[lg], pivot) > 0) {
         lg--;
       }
-      // }
+      if(sm < lg){
+        swap(values, sm, lg);
+      }
     }
-    swap(values, lb, sm - 1);
-    return sm - 1;
-  }
+    
+      // }
+    //}
+    
+    swap(values, lb, lg);
+    
+  
+    return lg;
+  
 } // class Quicksort
+}
