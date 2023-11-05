@@ -2,9 +2,13 @@ import java.util.Comparator;
 
 /**
  * Sort using insertion sort.
- *
- * @author Your Name Here
+
+ * @author Gabriela Roznawska
+ *  November 3rd 2023 
+ * CSC-207 MP6 
+ * Acknowledgements: Prof Rebelsky, Mentor Pom and my individual tutor
  */
+ 
 
 public class InsertionSort implements Sorter {
 
@@ -35,16 +39,16 @@ public class InsertionSort implements Sorter {
   // | Methods |
   // +---------+
 
-  /* 
+  /*
    * Given an array of items swaps the values of items with provided indexes
    */
   public <T> void swap(T[] values, int a, int b) {
     T temp = values[a];
     values[a] = values[b];
     values[b] = temp;
-  }//swap
+  }// swap
 
-  /* 
+  /*
    * Provided unsorted array of items, performs insertion sort and sorts out the array.
    */
   @Override
