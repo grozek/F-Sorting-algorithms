@@ -54,6 +54,7 @@ public class MergeSort implements Sorter {
       if (left < right) {
          int mid = (left + right) / 2;
          SortHelper(values, order, left, mid);
+         SortHelper(values, order, mid+1, right);
          T[] rightArray = Arrays.copyOfRange(values, left, mid + 1);
          T[] leftArray = Arrays.copyOfRange(values, mid + 1, right + 1);
          int rightIndex = 0;
