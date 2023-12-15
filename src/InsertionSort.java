@@ -2,11 +2,10 @@ import java.util.Comparator;
 
 /**
  * Sort using insertion sort.
-
- * @author Gabriela Roznawska
- * Acknowledgements: Prof Rebelsky
+ * 
+ * @author Gabriela Roznawska Acknowledgements: Prof Rebelsky
  */
- 
+
 
 public class InsertionSort implements Sorter {
 
@@ -26,8 +25,8 @@ public class InsertionSort implements Sorter {
   /**
    * Create a sorter.
    */
-    InsertionSort(){}
-   // InsertionSort()
+  InsertionSort() {}
+  // InsertionSort()
 
   // +---------+-----------------------------------------------------
   // | Methods |
@@ -43,10 +42,10 @@ public class InsertionSort implements Sorter {
   }// swap(T[], int, int)
 
   /*
-   * Provided unsorted array of items, while the end of the array is not reached,
-   * if the item is lower than the previous item in an array, it swaps their indexes and continues 
-   * doing so until the item is higher than the previous one. Stops the swap if the front end of the array
-   * is encountered
+   * Provided unsorted array of items, while the end of the array is not reached, if the item is
+   * lower than the previous item in an array, it swaps their indexes and continues doing so until
+   * the item is higher than the previous one. Stops the swap if the front end of the array is
+   * encountered
    */
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
@@ -58,10 +57,10 @@ public class InsertionSort implements Sorter {
           swap(values, i - x, i - x - 1);
           if (i - x - 1 == 0) {
             break;
-          }
+          } // if
           x++;
-        }
-      }
-    }
+        } // while
+      } // if
+    } // for
   } // sort(T[], Comparator<? super T>
 } // class InsertionSort

@@ -3,6 +3,6 @@ public class QuickSortExpt {
     SortTester st = new SortTester();
     st.sorter = GabrielaRoznawskaSort.SORTER;
     st.mixedWordsTest();
-  }
+  } // main(String[])
   
-}
+} // QuickSortExpt

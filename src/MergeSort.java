@@ -4,8 +4,10 @@ import java.util.Arrays;
 /**
  * Sort using merge sort.
  * 
- * @author Gabriela Roznawska November 3rd 2023 
- * Acknowledgements: Prof Rebelsky, Mentor Pom Dao and an individual tutor Destany Best
+ * @author Gabriela Roznawska 
+ * November 3rd 2023 
+ * Acknowledgements: Prof Rebelsky, Mentor Pom Dao and
+ * an individual tutor Destany Best
  */
 
 public class MergeSort implements Sorter {
@@ -40,21 +42,22 @@ public class MergeSort implements Sorter {
 
       if (values.length <= 1) {
          return;
-      }
-      SortHelper(values, order, 0, values.length - 1);
+      } // if
+      sortHelper(values, order, 0, values.length - 1);
 
    }// sort(T[], Comparator<? super T>
 
    /*
-    * If the left is lower than right, then compute the middle and recursively split the input into singular
-    * numbers and then merge them into one array, where the numbers are put in raising order.
-    * If one array "runs out" of numbers then just simply add the end of the remaining array to the back of new array
+    * If the left is lower than right, then compute the middle and recursively split the input into
+    * singular numbers and then merge them into one array, where the numbers are put in raising
+    * order. If one array "runs out" of numbers then just simply add the end of the remaining array
+    * to the back of new array
     */
-   public <T> void SortHelper(T[] values, Comparator<? super T> order, int left, int right) {
+   public <T> void sortHelper(T[] values, Comparator<? super T> order, int left, int right) {
       if (left < right) {
          int mid = (left + right) / 2;
-         SortHelper(values, order, left, mid);
-         SortHelper(values, order, mid+1, right);
+         sortHelper(values, order, left, mid);
+         sortHelper(values, order, mid + 1, right);
          T[] rightArray = Arrays.copyOfRange(values, left, mid + 1);
          T[] leftArray = Arrays.copyOfRange(values, mid + 1, right + 1);
          int rightIndex = 0;
@@ -67,23 +70,21 @@ public class MergeSort implements Sorter {
             } else {
                values[i] = rightArray[rightIndex];
                rightIndex++;
-            }
+            } // else
             i++;
-         }
+         } // while
          while (leftIndex < leftArray.length) {
             values[i] = leftArray[leftIndex];
             i++;
             leftIndex++;
-         }
+         } // while
          while (rightIndex < rightArray.length) {
             values[i] = rightArray[rightIndex];
             i++;
             rightIndex++;
-         }
-      }
-   }//sorterHelper(T[], Comparator<? super T, int, int>
-
-}// class MergeSort
-
+         } // while
+      } // if
+   } // sorterHelper(T[], Comparator<? super T, int, int>
+} // class MergeSort
 
 
