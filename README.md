@@ -7,3 +7,5 @@ As the name suggests, it's our mini-project for the sorting lab.
    Out of which: InsertionSort.java, MergeSort.java, QuickSort.java, GabrielaRoznawskaSort.java, GabrielaRoznawskaSortTester.java, SortTester.java
                  have been adapted and build upon prof. Samuel Rebelsky's code. The remaining contents his and only his products.
 3. Implementation of InsertionSort, MergeSort and QuickSort as well as personal sorting: GabrielaRoznawskaSort, along with testing.
+
+Acknowledgments : I would like to thank prof. Rebelsky with his help on this project, as well as my individual tutor Destany Best who had worked with me on brianstorming the ideas for implementing merge sort
