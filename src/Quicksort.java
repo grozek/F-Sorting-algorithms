@@ -1,10 +1,12 @@
 import java.util.Comparator;
 
 /**
- * Sort using Quicksort.
+ * Quicksort.java
+ * This program sorts using Quicksort.
  * 
  * @author Gabriela Roznawska 
- * November 3rd 2023 CSC-207 
+ * November 3rd 2023 
+ * CSC-207 
  * MP6 Acknowledgements: Prof Rebelsky, Mentor Pom and my individual tutor https://www.geeksforgeeks.org/quick-sort/ : I have used this
  * resource to learn more about the QuickSort as I struggled with it immensly. I
  * intentionally did not look at the Java version of the algorithm, but read the text and
